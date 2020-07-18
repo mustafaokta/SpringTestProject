@@ -1,9 +1,10 @@
 package gov.btk.spring.lab02.xmlconfig;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
-
+@SpringBootApplication
 public class AppMain {
 
 	private static ApplicationContext appContext;
@@ -13,7 +14,9 @@ public class AppMain {
 	 */
 	public static void main(String[] args) {
 		//appContext = new ClassPathXmlApplicationContext("app-context.xml");
-		appContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
+		//appContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
+		appContext=SpringApplication.run(AppMain.class);
+		
 		// assert singleton bean
 		assertSingleton();
 		

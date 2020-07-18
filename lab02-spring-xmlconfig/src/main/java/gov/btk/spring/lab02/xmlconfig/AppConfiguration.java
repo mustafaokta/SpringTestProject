@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@ComponentScan(basePackages="gov.btk.spring")
-@PropertySource(value="application.properties")
+
 public class AppConfiguration {
 	
 	

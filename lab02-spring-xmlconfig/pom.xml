@@ -5,6 +5,15 @@
 	<artifactId>lab02-spring-xmlconfig</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
+	<parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId>
+	<version> 1.5.8.RELEASE</version>
+	</parent>
+	
+	
+	
+	
    <build>
     <plugins>
       <plugin>
@@ -26,15 +35,11 @@
 	<dependencies>
 		<!-- TODO : dependencies go here -->
 	
-<dependency>
-    <groupId>joda-time</groupId>
-    <artifactId>joda-time</artifactId>
-    <version>2.10.6</version>
-</dependency>
+
 	<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>4.3.2.RELEASE</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			
 		</dependency>
 		</dependencies>	
 	<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
