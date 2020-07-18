@@ -1,27 +1,30 @@
 package gov.btk.spring.lab02.xmlconfig;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 
 public class AppMain {
 
 	private static ApplicationContext appContext;
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		appContext = new ClassPathXmlApplicationContext("app-context.xml");
-		
+		//appContext = new ClassPathXmlApplicationContext("app-context.xml");
+		appContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
 		// assert singleton bean
 		assertSingleton();
 		
 		// assert prototype bean
-		//assertPrototype();
+		assertPrototype();
 		
 		// assert dependency injection
-		//assertDependencyInjection();
+		assertDependencyInjection();
 		
 		// assert person bean
-		//assertPersonBean();
+		assertPersonBean();
 	}
 
 	private static void assertPrototype() {
@@ -39,13 +42,13 @@ public class AppMain {
 	}
 
 	private static void assertSingleton() {
-		SingletonBean singletonBean1 = appContext.getBean(SingletonBean.class);
+		SingletonBean singletonBean1 = appContext.getBean("xxxBean", SingletonBean.class);
 		System.out.println(singletonBean1.getMessage());
 		
-		SingletonBean singletonBean2 = appContext.getBean(SingletonBean.class);
+		SingletonBean singletonBean2 = appContext.getBean("xxxBean", SingletonBean.class);
 		System.out.println(singletonBean2.getMessage());
 		
-		SingletonBean singletonBean3 = appContext.getBean(SingletonBean.class);
+		SingletonBean singletonBean3 = appContext.getBean("xxxBean", SingletonBean.class);
 		System.out.println(singletonBean3.getMessage());
 
 		Assert.isTrue(singletonBean1 == singletonBean2, "singleton bean does not work!!!");
