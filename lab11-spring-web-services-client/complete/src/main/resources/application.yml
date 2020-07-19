@@ -1,0 +1,13 @@
+logging:
+  level:
+    hello: INFO
+    org:
+      springframework:
+        ws: DEBUG
+aservice:
+  service:
+    uri: http://localhost:8080/ws
+    
+bservice:
+  service:
+    uri: http://localhost:8080/ws    

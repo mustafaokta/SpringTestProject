@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: lab08-spring-web-mvc
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: egunay
+Implementation-Vendor-Id: gov.btk.spring
+Build-Jdk: 1.8.0_71
+Implementation-URL: http://projects.spring.io/spring-boot/lab08-spring
+ -web-mvc/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
