@@ -2,6 +2,7 @@ package com.btk.spring.demo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,30 +20,48 @@ public class AppMain implements CommandLineRunner{
 			SpringApplication.run(AppMain.class);
 		System.out.println("Hello world");
 		//ApplicationContext appContext;
-	}
+											}
+	
 @Autowired
-JdbcTemplate jdbcTemplate;
+CustomerRepository customerRepository;
+//JdbcTemplate jdbcTemplate;
 @Override
 public void run(String... args) throws Exception {
 	// TODO Auto-generated method stub
+	
+	Assert.notNull(customerRepository, "customerRepository sorunlu mevcut deðil");
+	Assert.isTrue(customerRepository.count()==0, "Tablo boþ olmalýydý");
+	
+	
+	
+	
+	/*
 	Assert.notNull(jdbcTemplate, "App-context sorunlu, jdbc template mevcut deðil");
 Long rowCount=	jdbcTemplate.queryForObject("select count(*) from customers", Long.class);
 System.out.println("Row count "+rowCount); 
 Assert.isTrue(rowCount==4, "Problem for row count");
 
-         List<Customer> customerList= jdbcTemplate.query("select * from customers", new RowMapper<Customer>() {
-
-	@Override
-	public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
-		return new Customer(rs.getLong("id"), rs.getString("first_name"), rs.getString("last_name") );
-	}	
-});
+         CustomerRowMapper rowMapper = new CustomerRowMapper();
+		List<Customer> customerList= jdbcTemplate.query("select * from customers", rowMapper);
 //þimdi deðerleri ekrana basalým
 for(Customer customer : customerList) {
-	System.out.println(customer.toString());
-	
+	System.out.println(customer.toString());	
 }
+
+List<Object[]> newCustomers = new ArrayList<>();
+newCustomers.add(new Object[] {"foo", "bee"});
+newCustomers.add(new Object[] {"edi", "büdü"});
+
+// Uses JdbcTemplate's batchUpdate operation to bulk load data
+jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", newCustomers);
+
+customerList= jdbcTemplate.query("select * from customers", rowMapper);
+
+//þimdi deðerleri ekrana basalým
+	for(Customer customer : customerList) {
+	System.out.println(customer.toString());	
+}
+*/
 
 }
 }
