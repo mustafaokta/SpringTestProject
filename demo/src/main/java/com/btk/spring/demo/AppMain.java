@@ -32,9 +32,13 @@ public void run(String... args) throws Exception {
 	Assert.notNull(customerRepository, "customerRepository sorunlu mevcut deðil");
 	Assert.isTrue(customerRepository.count()==0, "Tablo boþ olmalýydý");
 	
+	Customer customer= customerRepository.save(new Customer("foo","bee"));
 	
+	System.out.println(customer.toString());
+	Assert.isTrue(customer.getId().longValue()==1, "id generation hatasý!!");
 	
-	
+	Customer customerFound=customerRepository.findOne(1l); //Jpa da select by id yapma komutu
+	System.out.println(customerFound.toString());
 	/*
 	Assert.notNull(jdbcTemplate, "App-context sorunlu, jdbc template mevcut deðil");
 Long rowCount=	jdbcTemplate.queryForObject("select count(*) from customers", Long.class);
